@@ -1,6 +1,8 @@
 # MuseSnap
 Music App
 
+Note-Go to master branch for source code.
+
 Hello Welcome to my personal project demonstration called as MuseSnap.
 While scrolling on insta or youtube , you might get to see lots of Musicians 🎶🎸🎺🎵🎼🎧
 But sometimes we fail to recognize them and find the exact type of music they create.

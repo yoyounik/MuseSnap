@@ -12,8 +12,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Component
 public class ImageRecognitionService {
     private static final String API_URL = "https://api.imagga.com/v2/tags";
-    private static final String API_KEY = "acc_cc18a358d0b173f"; // Replace with your API Key
-    private static final String API_SECRET = "815aadf410a0d1b323ba287644a568e8"; // Replace with your API Secret
+    private static final String API_KEY = "API_KEY"; // Replace with your API Key
+    private static final String API_SECRET = "API_SECRET_KEY"; // Replace with your API Secret
 
     public String recognizeImage(String imageUrl) {
         try {

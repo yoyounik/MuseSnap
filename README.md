@@ -1,7 +1,7 @@
 # MuseSnap
 Music App
 
-Note-Go to master branch for source code.
+##Note-Go to master branch for source code.
 
 Hello Welcome to my personal project demonstration called as MuseSnap.
 While scrolling on insta or youtube , you might get to see lots of Musicians 🎶🎸🎺🎵🎼🎧

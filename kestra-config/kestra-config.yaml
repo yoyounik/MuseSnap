@@ -1,0 +1,40 @@
+id: musesnap-workflow
+namespace: musesnap
+inputs:
+  - id: imageId
+    type: STRING
+
+tasks:
+  # Step 1: Fetch image metadata from MongoDB
+  - id: fetch-image
+    type: io.kestra.plugin.mongodb.Find
+    connection:
+      uri: "mongodb://localhost:27017"
+    database: "musesnapdb"
+    collection: "fs.files"
+    filter: |
+      {
+        "_id": ObjectId("{{ inputs.imageId }}")
+      }
+
+  # Step 2: Download image using namespace file handling
+  - id: download-image
+    type: io.kestra.plugin.core.namespace.DownloadFiles
+    namespace: musesnap
+    files:
+      - "{{ outputs['fetch-image'].documents[0].filename }}"
+    destination: "{{ workingDir }}/images"
+
+  # Step 3: Save analysis result to MongoDB
+  - id: save-analysis
+    type: io.kestra.plugin.mongodb.InsertOne
+    connection:
+      uri: "mongodb://localhost:27017"
+    database: "musesnapdb"
+    collection: "image_analysis"
+    document: |
+      {
+        "imageId": "{{ inputs.imageId }}",
+        "metadata": "{{ outputs['fetch-image'].documents[0] }}",
+        "timestamp": { "$date": "{{ now }}" }
+      }

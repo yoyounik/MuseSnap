@@ -84,6 +84,8 @@ We used **Kestra** as a workflow orchestration tool in this project.
    - Add support for more complex image recognition.
    - Enhance the music playlist recommendations.
    - Allow direct downloading of playlists to Google Drive or the user's device.
+  
+This Project is part of my hackathon: #hackfrost2024. Conducted by @kestra.io , Special Thanks to @KunalKushwaha and @WeMakeDevs and @Kestra for conducting this Hackathon.
 
 
 

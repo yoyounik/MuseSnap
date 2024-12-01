@@ -22,9 +22,11 @@ Muse Snap is an innovative web application designed to make music discovery seam
 ---
 
 ## Use Case: **Kestra Workflow Integration**
-We used **Kestra** as a workflow orchestration tool in this project:
-- It helps in automating backend tasks such as triggering API calls for image analysis and playlist generation.
-- This allows seamless task orchestration, ensuring efficiency and scalability.
+We used **Kestra** as a workflow orchestration tool in this project. 
+
+- A custom workflow YAML file has been added, which triggers specific actions when a user uploads an image of a musician.
+- The workflow automates the process of fetching uploaded images stored in **MongoDB**, downloading them, and analyzing them for artist recognition.
+- This integration simplifies task management and enhances the scalability of the system.
 
 ---
 

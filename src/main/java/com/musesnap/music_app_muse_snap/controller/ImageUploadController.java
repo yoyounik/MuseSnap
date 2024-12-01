@@ -14,6 +14,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/uploads")
+@CrossOrigin(origins = "http://localhost:5173") // Replace with your React app's URL
 public class ImageUploadController {
 
     @Autowired

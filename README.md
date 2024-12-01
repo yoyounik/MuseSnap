@@ -48,7 +48,8 @@ We used **Kestra** as a workflow orchestration tool in this project.
 ---
 
 ## How to Run the Project
-
+ - For smooth running install Intellij iDE , and run the project, you can run the image  recognition part in backend , while
+ - for front end use VS Code. Just select any image from your local device , upload it , then click on generate playlist , where you can add artist name, the API will help you generate playlist of their songs.
 ### **Backend Setup**
 1. Clone the repository:
    ```bash

@@ -55,4 +55,35 @@ We used **Kestra** as a workflow orchestration tool in this project.
    ```bash
    git clone https://github.com/yourusername/musesnap.git
    cd musesnap/backend
+   ```
+2. Open the backend folder in IntelliJ IDEA.
+
+   Set up the required environment variables in the application.properties or application.yml file (e.g., MongoDB URI).
+
+   - Run the backend:
+   - Locate the main class (e.g., com.musesnap.MuseSnapApplication) and run it.
+   - Ensure the backend is running at http://localhost:8080.
+   - Test the backend: Use Postman or any API testing tool. API endpoint example: POST /api/upload-image to upload an image
+
+### **Frontend Setup**
+1. Navigate to the frontend folder:
+   ```bash
+   cd musesnap/frontend
+   ```
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Access the frontend: Open your browser and go to http://localhost:5173 (default Vite development port).
+
+5. Future Enhancements
+   - Add support for more complex image recognition.
+   - Enhance the music playlist recommendations.
+   - Allow direct downloading of playlists to Google Drive or the user's device.
+
+
 

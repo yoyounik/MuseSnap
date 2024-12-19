@@ -1,7 +1,7 @@
 # Muse Snap 🎵📷
 
 Muse Snap is an innovative web application designed to make music discovery seamless and fun. Scrolling insta or Youtube , cannot find that drummer or artist details anywhere else , upload an image of a musician, let our backend AI recognize the artist, and generate playlists based on trending songs. Whether you’re curating moods or just exploring new music, Muse Snap is your gateway to discovering the tunes that inspire the world.
-<b>Checkout kestra config file for YAML code </b>
+<b>Checkout kestra config file for YAML code. </b>
 
 ---
 

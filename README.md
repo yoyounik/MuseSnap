@@ -17,6 +17,8 @@ AND you can just by simple click direclty download the playlist in your personal
 
 Here is the demonstration of MuseSnap:
 ![{E608C970-D057-4083-8577-9DEEB5EBE701}](https://github.com/user-attachments/assets/a5dbf741-84d1-48d6-9d3e-be1df2811e23)
+![image](https://github.com/user-attachments/assets/48347a93-ff34-4f92-a2b7-f4d00e70c1d2)
+
 
 Work done: Created a image uploader using spring boot and mongodb, use POSTMAN to store the images - <b>GO TO MASTER BRANCH</b> for source code - the images are directly getting stored in the database. Future Plan- Use AWS S3 for better use.
 

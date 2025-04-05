@@ -258,8 +258,3 @@ mv -- "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" "$MAVEN_HOME" || [ -d "$MAVEN
 clean || :
 exec_maven "$@"
 
-chmod +x mvnw
-git add mvnw
-git commit -m "Fix: Add execute permission to mvnw"
-git push
-

@@ -6,6 +6,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Configuration
 public class WebConfig {
 
@@ -13,11 +16,26 @@ public class WebConfig {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
+        
+        // Allow credentials
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("https://musesnap1.vercel.app");
-        config.addAllowedOrigin("http://localhost:5173");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
+        
+        // Allow all Vercel domains and localhost
+        config.setAllowedOriginPatterns(Arrays.asList(
+            "http://localhost:[*]",
+            "https://*.vercel.app"
+        ));
+        
+        // Allow all headers and methods
+        config.setAllowedHeaders(Arrays.asList("*"));
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        
+        // Expose headers that might be needed by the client
+        config.setExposedHeaders(Arrays.asList("Authorization", "Content-Type"));
+        
+        // Max age
+        config.setMaxAge(3600L);
+        
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

@@ -14,12 +14,6 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/uploads")
-@CrossOrigin(origins = {
-    "http://localhost:5173",
-    "https://musesnap.vercel.app",
-    "https://musesnap1.vercel.app",
-    "https://musesnap-9m7jhqjlw-nikhils-projects-63d23fe7.vercel.app"
-})
 public class ImageUploadController {
 
     @Autowired

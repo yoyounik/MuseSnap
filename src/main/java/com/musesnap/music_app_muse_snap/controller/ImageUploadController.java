@@ -14,7 +14,11 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/uploads")
-@CrossOrigin(origins = "http://localhost:5173") // Replace with your React app's URL
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://musesnap.vercel.app",
+    "https://musesnap-9m7jhqjlw-nikhils-projects-63d23fe7.vercel.app"
+})
 public class ImageUploadController {
 
     @Autowired

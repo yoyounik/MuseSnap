@@ -1,5 +1,7 @@
 package com.musesnap.music_app_muse_snap.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -16,18 +18,40 @@ import java.io.IOException;
 @RequestMapping("/api/uploads")
 public class ImageUploadController {
 
+    private static final Logger logger = LoggerFactory.getLogger(ImageUploadController.class);
+
     @Autowired
     private GridFsTemplate gridFsTemplate;
 
     // Endpoint to upload an image
     @PostMapping("/images")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Please select a file to upload");
+        }
+
         try {
+            logger.info("Attempting to upload file: {}", file.getOriginalFilename());
+            logger.info("File size: {} bytes", file.getSize());
+            logger.info("Content type: {}", file.getContentType());
+
             // Save the file to MongoDB GridFS
-            ObjectId fileId = gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType());
+            ObjectId fileId = gridFsTemplate.store(
+                file.getInputStream(),
+                file.getOriginalFilename(),
+                file.getContentType()
+            );
+            
+            logger.info("File uploaded successfully with ID: {}", fileId.toString());
             return ResponseEntity.ok("Image uploaded successfully with ID: " + fileId.toString());
         } catch (IOException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error uploading image");
+            logger.error("IOException while uploading file", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error uploading image: " + e.getMessage());
+        } catch (Exception e) {
+            logger.error("Unexpected error while uploading file", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Unexpected error uploading image: " + e.getMessage());
         }
     }
 

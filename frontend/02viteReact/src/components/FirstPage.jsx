@@ -21,6 +21,7 @@ function FirstPage() {
     formData.append("file", file);
 
     try {
+      console.log("Attempting to upload to:", `${API_URL}/api/uploads/images`);
       const response = await axios.post(
         `${API_URL}/api/uploads/images`,
         formData,
@@ -37,8 +38,13 @@ function FirstPage() {
 
       navigate("/second", { state: { imageUrl } });
     } catch (error) {
-      console.error("Upload error:", error);
-      alert("Failed to upload image: " + error.message);
+      console.error("Upload error details:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+        url: `${API_URL}/api/uploads/images`
+      });
+      alert(`Failed to upload image: ${error.message}\nStatus: ${error.response?.status}\nPlease check console for details.`);
     }
   };
 

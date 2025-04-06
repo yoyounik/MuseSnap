@@ -5,6 +5,7 @@ import axios from "axios";
 function FirstPage() {
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -21,7 +22,7 @@ function FirstPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/uploads/images", // Backend API endpoint
+        `${API_URL}/api/uploads/images`,
         formData,
         {
           headers: {
@@ -31,11 +32,12 @@ function FirstPage() {
       );
 
       // On successful upload, navigate to the second page
-      const uploadedImageId = response.data.split(": ")[1]; // Extract the ID from the backend response
-      const imageUrl = `http://localhost:8080/api/uploads/images/${uploadedImageId.trim()}`; // Use correct endpoint
+      const uploadedImageId = response.data.split(": ")[1];
+      const imageUrl = `${API_URL}/api/uploads/images/${uploadedImageId.trim()}`;
 
       navigate("/second", { state: { imageUrl } });
     } catch (error) {
+      console.error("Upload error:", error);
       alert("Failed to upload image: " + error.message);
     }
   };
@@ -56,7 +58,7 @@ function FirstPage() {
       {/* Header Section */}
       <div className="absolute top-10 left-10 text-sm font-medium tracking-wide">
         <span className="flex items-center">
-          <span className="mr-2 text-xl">✨</span> N S original’s
+          <span className="mr-2 text-xl">✨</span> N S original's
         </span>
       </div>
 

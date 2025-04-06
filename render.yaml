@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: musesnap
+    env: java
+    buildCommand: docker build -t musesnap .
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: MONGO_URI
+        sync: false
+    healthCheckPath: /actuator/health 
